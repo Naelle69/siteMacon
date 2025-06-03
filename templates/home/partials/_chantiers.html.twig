@@ -1,0 +1,31 @@
+<section class="mt-5">
+        <h2 class="text-center mb-4 fw-bold">Nos Chantiers</h2>
+        <div class="row g-3 mt-5">
+
+            {% for chantier in chantiers %}
+                <div class="col-md-6">
+                    <!-- Image principale -->
+                    <div class="position-relative" data-bs-toggle="carousel" data-bs-target="#carousel{{ chantier.id }}">
+                        <img src="{{ asset(chantier.imagePrincipale) }}" alt="{{ chantier.titre }}" class="img-fluid rounded shadow-sm w-100">
+                        
+                        <!-- Carrousel caché par défaut -->
+                        <div id="carousel{{ chantier.id }}" class="carousel slide position-absolute top-0 start-0 w-100 h-100 z-2" data-bs-interval="1000">
+                            <div class="carousel-inner h-100">
+                                {% for image in chantier.images %}
+                                    <div class="carousel-item h-100{% if loop.first %} active{% endif %}">
+                                        <img src="{{ asset(image.chemin) }}" class="d-block w-100 h-100 object-fit-cover" alt="Image {{ loop.index }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if loop.index is even and not loop.last %}
+                    </div><div class="row g-3 mt-5">
+                {% endif %}
+            {% else %}
+                <p>Aucun chantier trouvé.</p>
+            {% endfor %}
+        </div>
+    </section>

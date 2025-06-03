@@ -1,0 +1,28 @@
+{# templates/home/partials/_header.html.twig #}
+
+    <div class="row g-0">
+        <!-- Partie Texte avec background image + overlay -->
+        <div class="col-md-6 position-relative text-primary d-flex align-items-center" style="background: url('{{ asset('images/services/fond crepi hp.jpg') }}') center/cover no-repeat;">
+           {#  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div> Superposition couleur foncée #}
+            <div class="position-relative p-5">
+                <h1 class="display-5 fw-bold">{{header.titre}}</h1>
+                <h2 class="my-5">{{header.sousTitre}}</h2>
+            </div>
+        </div>
+        <!-- Partie Image droite avec texte en overlay -->
+        <div class="col-md-6 position-relative">
+            <img src="{{ asset('images/services/luxury-home-2412145_1280.jpg') }}" alt="Chantier de construction" class="img-fluid h-100 w-100 object-fit-cover rounded-0">
+
+            <!-- Overlay sombre en arrière-plan -->
+            <div class="position-absolute bottom-0 start-50 translate-middle-x w-100 h-100 d-flex align-items-center justify-content-center ">
+                <div class="bg-dark opacity-75 w-100 h-100 position-absolute top-0 start-0"></div>
+
+                <!-- Contenu texte au-dessus -->
+                <div class="position-relative text-white p-3">
+                    <h2 class="lead">Notre savoir-faire et nos compétences au service de nos clients</h2>
+                    <button href="{{ path('app_service') }}" class="btn btn-primary btn-md">Consulter nos services</button>
+                </div>
+            </div>
+        </div>
+    </div>
+

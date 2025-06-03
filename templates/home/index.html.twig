@@ -1,0 +1,54 @@
+{# templates/home/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Mon Site Artisan{% endblock %}
+
+{% block body %}
+    <!-- Titre principal -->
+    <div class="text-center mb-5">
+        <div class="col-12">
+            {% include '/home/partials/_header.html.twig' %}
+        </div>
+    </div>
+    <div class="container py-5">
+        <!-- Services en avant -->
+        <div class="row g-4 mt-5 text-center">
+            <h2 class="text-center mb-4 fw-bold">Nos domaines d'expertise</h2>
+            {% include '/home/partials/_domainesExpertise.html.twig' %}
+        </div>
+
+    <!-- Section photos -->
+    {% include '/home/partials/_chantiers.html.twig' %}
+
+    <!-- Témoignages (optionnel) -->
+    <section class="mt-5">
+        <h2 class="text-center mb-4 fw-bold">Ils nous font confiance</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-sm p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3">
+                            <img src="{{ asset('images/avatar1.png') }}" alt="Client" class="rounded-circle" width="50" height="50">
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Sophie M.</h6>
+                            <small class="text-muted">Lyon</small>
+                        </div>
+                    </div>
+                    <p class="text-muted">"Travail impeccable et équipe très professionnelle. Je recommande vivement !"</p>
+                    <div class="text-warning">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="text-center mt-5">
+        <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">Demandez votre devis gratuit</a>
+    </div>
+
+</div>
+{% endblock %}
