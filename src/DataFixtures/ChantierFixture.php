@@ -5,46 +5,51 @@ namespace App\DataFixtures;
 use App\Entity\Chantiers;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
+use Faker\Factory as FakerFactory;
 
 class ChantierFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        // Initialisation de Faker
+        $faker = FakerFactory::create('fr_FR');
+
         // Liste des images disponibles
         $images = [
-            'architecture-257960_640.jpg',
-            'fond crepi hp.jpg',
-            'luxury-home-2412145_1280.jpg',
-            'paint-brush-1034901_640.jpg',
-            'purchase-313198_640.jpg',
-            'real-estate-955483_640.jpg',
-            'straubing-8669480_640.jpg',
+            'bathroom-1336164_640.jpg',
+            'bathroom-1597027_640.jpg',
+            'bathroom-6686057_640.jpg',
+            'bricks-2181920_640.jpg',
+            'home-2404521_640.jpg',
+            'kitchen-5139610_640.jpg',
         ];
 
-        // Générateur de données fictives
-        $faker = Factory::create('fr_FR');
+        // Dossiers d'images
+        $dossierPrincipal = '/images/chantiers/';
+        $dossierCarrousel = '/images/services/';
 
-        for ($i = 1; $i <= 5; $i++) {
-            // Choisis une image principale aléatoire
-            $imagePrincipale = '/images/services/' . array_rand($images);
+        // Génération de 5 chantiers
+for ($i = 0; $i < count($images); $i++) {
+    $chantier = new Chantiers();
 
-            // Choisis des images de carrousel aléatoires
-            $carrouselImages = [];
-            for ($j = 0; $j < 4; $j++) {
-                $carrouselImages[] = '/images/services/' . $images[array_rand($images)];
-            }
+    $imagePrincipale = $dossierPrincipal . $images[$i];
 
-            // Crée le chantier
-            $chantier = new Chantiers();
-            $chantier->setNom("Chantier n°$i");
-            $chantier->setDescription($faker->sentence(5)); // Description aléatoire
-            $chantier->setImagePrincipale($imagePrincipale);
-            $chantier->setCarrouselImages($carrouselImages);
+    // Carrousel (autres images sauf l'image principale)
+    $carrouselImages = [];
+    foreach (array_slice($images, 0, 4) as $key => $image) {
+        $carrouselImages[] = $dossierCarrousel . $image;
+    }
 
-            $manager->persist($chantier);
-        }
+    $chantier->setNom("Chantier n°" . ($i + 1));
+    $chantier->setDescription($faker->sentence(5));
+    $chantier->setImagePrincipale($imagePrincipale);
+    $chantier->setCarrouselImages($carrouselImages);
 
+    $manager->persist($chantier);
+}
+
+
+        // Enregistrement final
         $manager->flush();
     }
 }

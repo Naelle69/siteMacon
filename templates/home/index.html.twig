@@ -22,28 +22,8 @@
     {% include '/home/partials/_chantiers.html.twig' %}
 
     <!-- Témoignages (optionnel) -->
-    <section class="mt-5">
-        <h2 class="text-center mb-4 fw-bold">Ils nous font confiance</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card border-0 shadow-sm p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="me-3">
-                            <img src="{{ asset('images/avatar1.png') }}" alt="Client" class="rounded-circle" width="50" height="50">
-                        </div>
-                        <div>
-                            <h6 class="mb-0 fw-bold">Sophie M.</h6>
-                            <small class="text-muted">Lyon</small>
-                        </div>
-                    </div>
-                    <p class="text-muted">"Travail impeccable et équipe très professionnelle. Je recommande vivement !"</p>
-                    <div class="text-warning">
-                        ★★★★★
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include '/home/partials/_avis.html.twig' %}
+        
 
     <!-- CTA -->
     <div class="text-center mt-5">

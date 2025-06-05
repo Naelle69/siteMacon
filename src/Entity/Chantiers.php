@@ -23,8 +23,12 @@ class Chantiers
     #[ORM\Column(length: 255)]
     private ?string $imagePrincipale = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $carrouselImages = null;
+    //Doctrine propose un type spécial json qui :
+    //permet de stocker des tableaux/objets encodés en JSON, 
+    // gère automatiquement l'encodage/décodage, 
+    // n’a pas de limite arbitraire comme 255 caractères
+    #[ORM\Column(type: Types::JSON)]
+    private array $carrouselImages = [];
 
     public function getId(): ?int
     {
@@ -67,15 +71,15 @@ class Chantiers
         return $this;
     }
 
-    public function getCarrouselImages(): ?string
+    public function getCarrouselImages(): array
     {
         return $this->carrouselImages;
     }
 
-    public function setCarrouselImages(string $carrouselImages): static
+    public function setCarrouselImages(array $carrouselImages): self
     {
         $this->carrouselImages = $carrouselImages;
-
         return $this;
     }
+
 }

@@ -19,23 +19,23 @@
     {% if services is empty %}
         <p>Aucun service trouvé.</p>
     {% else %}
-        {% for service in services %}
-            <div class="card my-5">
-                <div class="row gx-4">
-                    <div class="col-md-6">
-                        <h3 class="card-title">{{ service.nom }}</h3>
-                        <p class="card-text">{{ service.description }}</p>
-                    </div>
-                    <div class="col-md-6">
-                    <img 
-                        src="{{ asset('images/services/' ~ service.image) }}" 
-                        alt="{{ service.nom }}" 
-                        class="img-fluid rounded-end"
-                    >
-                    </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for service in services %}
+                <div class="col">
+                    <div class="card shadow-sm bg-light rounded-3 border-0">
+                        <img 
+                            src="{{ asset('images/services/' ~ service.image) }}" 
+                            alt="{{ service.nom }}" 
+                            class="card-img-top rounded-top"
+                        >
+                        <div class="card-body">
+                            <h3 class="card-title">{{ service.nom }}</h3>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
+                    </div>    
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     {% endif %}
 </div>
 {% endblock %}

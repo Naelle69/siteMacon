@@ -1,0 +1,43 @@
+
+{% block body %}
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Ils nous font confiance</h2>
+
+            <div class="row g-4">
+                {% for avis in avisList %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm p-4 bg-light rounded-3 border-0">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                <div>
+                                    <h5 class="mb-0">{{ avis.nomClient }}</h5>
+                                    <small class="text-muted">{{ avis.lieu }}</small>
+                                </div>
+                            </div>
+                            <p class="mb-3">{{ avis.commentaire }}</p>
+                            <div class="d-flex text-primary">
+                                {{ avis.etoilesHtml|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center">Aucun avis trouvé.</p>
+                {% endfor %}
+            </div>
+            <a href="">Connectez-vous pour laisser un message</a>
+        </div>
+    </section>
+
+{% endblock %}
+
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+</style>
