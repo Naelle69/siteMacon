@@ -26,6 +26,9 @@ class Avis
     #[ORM\Column]
     private ?int $note = null;
 
+    #[ORM\ManyToOne(inversedBy: 'avis')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,14 +94,27 @@ class Avis
         $etoiles = min(5, max(0, $this->note));
         $html = '';
 
+
         for ($i = 1; $i <= 5; $i++) {
             if ($i <= $etoiles) {
                 $html .= '<span class="fas fa-star text-primary"></span>';
             } else {
-                $html .= '<span class="far fa-star text-secondary"></span>';
+                $html .= '<span class="far fa-star text-primary-dark"></span>';
             }
         }
 
         return $html;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

@@ -11,24 +11,27 @@
             {% include '/home/partials/_header.html.twig' %}
         </div>
     </div>
-    <div class="container py-5">
+    
+    
+    <div class="container">
         <!-- Services en avant -->
-        <div class="row g-4 mt-5 text-center">
-            <h2 class="text-center mb-4 fw-bold">Nos domaines d'expertise</h2>
+        <div class="py-5">
             {% include '/home/partials/_domainesExpertise.html.twig' %}
         </div>
 
-    <!-- Section photos -->
-    {% include '/home/partials/_chantiers.html.twig' %}
+        <!-- Section photos -->
+        <div class="py-5">
+            {% include '/home/partials/_chantiers.html.twig' %}
+        </div>
 
-    <!-- Témoignages (optionnel) -->
-    {% include '/home/partials/_avis.html.twig' %}
-        
+        <!-- Témoignages (optionnel) -->
+        <div class="py-5">
+            {% include '/home/partials/_avis.html.twig' %}
+        </div>
 
-    <!-- CTA -->
-    <div class="text-center mt-5">
-        <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">Demandez votre devis gratuit</a>
+        <!-- CTA -->
+        <div class="text-center py-5">
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">Demandez votre devis gratuit</a>
+        </div>
     </div>
-
-</div>
 {% endblock %}

@@ -3,40 +3,33 @@
 {% block title %}Nos services{% endblock %}
 
 {% block body %}
-<style>
-    .card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 1em;
-        margin-bottom: 1em;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-</style>
 
-<div class="container  my-5">
-    <h1>Nos Services</h1>
+<div class="container">
+    <div class="py-5">
+        <h1>Nos Services</h1>
 
-    {% if services is empty %}
-        <p>Aucun service trouvé.</p>
-    {% else %}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            {% for service in services %}
-                <div class="col">
-                    <div class="card shadow-sm bg-light rounded-3 border-0">
-                        <img 
-                            src="{{ asset('images/services/' ~ service.image) }}" 
-                            alt="{{ service.nom }}" 
-                            class="card-img-top rounded-top"
-                        >
-                        <div class="card-body">
-                            <h3 class="card-title">{{ service.nom }}</h3>
-                            <p class="card-text">{{ service.description }}</p>
-                        </div>
-                    </div>    
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+        {% if services is empty %}
+            <p>Aucun service trouvé.</p>
+        {% else %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 my-5">
+                {% for service in services %}
+                    <div class="col">
+                        <div class="card shadow-sm bg-light rounded-3 border-0">
+                            <img 
+                                src="{{ asset('images/services/' ~ service.image) }}" 
+                                alt="{{ service.nom }}" 
+                                class="card-img-top rounded-top"
+                            >
+                            <div class="card-body">
+                                <h3 class="card-title">{{ service.nom }}</h3>
+                                <p class="card-text">{{ service.description }}</p>
+                            </div>
+                        </div>    
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 
