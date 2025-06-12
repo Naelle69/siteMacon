@@ -4,44 +4,47 @@
 
 {% block body %}
 <section class="min-vh-100 d-flex align-items-center">
-    <div class="container py-5">
-        <h1 class="text-center mb-5 fw-bold text-primary">Créer un compte</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+            <h1 class="text-center mb-5 fw-bold text-primary">Créer un compte</h1>
 
-        <div class="card card-bg shadow-sm border-0 bg-light p-4 rounded-4">
-            <div class="card-body p-5">
-                {% for flash_error in app.flashes('verify_email_error') %}
-                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-                {% endfor %}
+            <div class="card card-bg shadow-sm border-0 bg-beige-lime p-4 rounded-4">
+                <div class="card-body p-5">
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
 
-                {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                    {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
 
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.nom) }}
-                        {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(registrationForm.nom) }}
-                    </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.nom) }}
+                            {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.nom) }}
+                        </div>
 
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.email) }}
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(registrationForm.email) }}
-                    </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.email) }}
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
 
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.plainPassword) }}
-                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(registrationForm.plainPassword) }}
-                    </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.plainPassword) }}
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.plainPassword) }}
+                        </div>
 
-                    <div class="form-check mb-3">
-                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
-                        {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
-                        {{ form_errors(registrationForm.agreeTerms) }}
-                    </div>
+                        <div class="form-check mb-3">
+                            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                            {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                            {{ form_errors(registrationForm.agreeTerms) }}
+                        </div>
 
-                    <button type="submit" class="btn btn-primary">S’inscrire</button>
+                        <button type="submit" class="btn btn-primary">S’inscrire</button>
 
-                {{ form_end(registrationForm) }}
+                    {{ form_end(registrationForm) }}
+                </div>
             </div>
         </div>
     </div>

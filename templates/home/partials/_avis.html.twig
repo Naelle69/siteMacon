@@ -4,7 +4,7 @@
             <div class="container row align-items-center justify-content-center my-3 my-md-5">
                 <h2 class="mb-5 fw-bold text-primary">Ils nous font confiance</h2>
                 {% for avis in avisList %}
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card bg-white card-animation h-100 shadow-sm border-0 p-4 rounded-sn">
                             <div class="d-flex align-items-center mb-3">
                                 <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3 border" style="width: 50px; height: 50px; object-fit: cover;">
@@ -19,15 +19,14 @@
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    <div class="col-12">
-                        <p class="text-muted">Aucun avis trouvé.</p>
-                    </div>
                 {% endfor %}
+
 
                 {# Affichage de la pagination #}
                 <div class="mt-4 d-flex justify-content-center">
-                    {{ knp_pagination_render(avisList) }}
+                    <nav>
+                        {{ knp_pagination_render(avisList) }}
+                    </nav>
                 </div>
 
                 <div class="text-center mt-5 pb-1 pb-md-3">
