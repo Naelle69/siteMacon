@@ -1,23 +1,23 @@
-<nav class="navbar navbar-expand-lg bg-light shadow-sm fixed-top z-3">
+<nav class="navbar navbar-expand-lg bg-primary-dark shadow-sm fixed-top z-3">
   <div class="container-fluid">
-    <a class="navbar-brand text-primary-dark bold" href="{{path('app_home')}}">LOGO</a>
+    <a class="navbar-brand text-white fw-bold" href="{{ path('app_home') }}">LOGO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav text-primary">
-        <li class="nav-item text-primary">
-          <a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Accueil</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ path('app_home') }}">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{path('app_service')}}">Services</a>
+          <a class="nav-link text-white" href="{{ path('app_service') }}">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link bold" href="{{path('app_contact')}}">Contact</a>
+          <a class="nav-link fw-bold text-white" href="{{ path('app_contact') }}">Contact</a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link disabled"  href="{{ path('app_login') }}" aria-disabled="true">Connexion</a>
-        </li> 
+        <li class="nav-item">
+          <a class="nav-link text-muted text-white" href="{{ path('app_login') }}" aria-disabled="true">Connexion</a>
+        </li>
       </ul>
     </div>
   </div>

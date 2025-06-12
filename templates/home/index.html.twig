@@ -6,10 +6,15 @@
 
 {% block body %}
     <!-- Titre principal -->
-    <div class="text-center mb-5">
+    <div class="text-center">
         <div class="col-12">
             {% include '/home/partials/_header.html.twig' %}
         </div>
+    </div>
+
+    <!-- About -->
+    <div class=" mb-3  mb-md-5">
+        {% include '/home/partials/_about.html.twig' %}
     </div>
     
     
@@ -23,15 +28,15 @@
         <div class="py-5">
             {% include '/home/partials/_chantiers.html.twig' %}
         </div>
+    </div>
 
-        <!-- Témoignages (optionnel) -->
-        <div class="py-5">
-            {% include '/home/partials/_avis.html.twig' %}
-        </div>
+    <!-- Témoignages -->
+    <div class="">
+        {% include '/home/partials/_avis.html.twig' %}
+    </div>
 
-        <!-- CTA -->
-        <div class="text-center py-5">
-            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">Demandez votre devis gratuit</a>
-        </div>
+            <!-- CTA -->
+    <div class="text-center py-5 cta">
+        <a href="{{ path('app_contact') }}" class="btn bg-white btn-lg px-5 py-3 rounded-sm shadow-sm">Demandez votre devis gratuit</a>
     </div>
 {% endblock %}

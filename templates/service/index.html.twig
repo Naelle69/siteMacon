@@ -4,33 +4,103 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="py-5">
-        <h1>Nos Services</h1>
+  <!-- Hero -->
+  <section class="hero">
+    <h1 class="display-4 fw-bold  pt-3 pt-md-5">Construction & Rénovation</h1>
+    <p class="lead">Des solutions durables et esthétiques pour votre habitat.</p>
+  </section>
 
-        {% if services is empty %}
-            <p>Aucun service trouvé.</p>
-        {% else %}
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 my-5">
-                {% for service in services %}
-                    <div class="col">
-                        <div class="card shadow-sm bg-light rounded-3 border-0">
-                            <img 
-                                src="{{ asset('images/services/' ~ service.image) }}" 
-                                alt="{{ service.nom }}" 
-                                class="card-img-top rounded-top"
-                            >
-                            <div class="card-body">
-                                <h3 class="card-title">{{ service.nom }}</h3>
-                                <p class="card-text">{{ service.description }}</p>
-                            </div>
-                        </div>    
-                    </div>
-                {% endfor %}
+  <!-- Services -->
+  <section class="services bg-beige-lime" id="services">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold text-primary">Nos Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-card p-4 h-100 shadow-sm rounded">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-building brick-brown me-3" style="font-size: 2rem;"></i>
+              <h5 class="fw-bold text-primary m-0">Conception Architecturale</h5>
             </div>
-        {% endif %}
-    </div>
-</div>
-{% endblock %}
+            <p class="mb-3 text-primary ">Création de maisons modernes et fonctionnelles adaptées à vos besoins.</p>
+            <p class="text-muted small m-0"><strong>Qualité :</strong> Créative – Innovante – Sur mesure</p>
+          </div>
+        </div>
 
+        <div class="col-md-4">
+          <div class="service-card p-4 h-100 shadow-sm rounded">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-tools brick-brown me-3" style="font-size: 2rem;"></i>
+              <h5 class="fw-bold text-primary m-0">Rénovation Expertise</h5>
+            </div>
+            <p class="mb-3 text-primary ">Mise à neuf intérieure et extérieure avec des matériaux durables et de qualité.</p>
+            <p class="text-muted small m-0"><strong>Qualité :</strong> Précise – Fiable – Durable</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="service-card p-4 h-100 shadow-sm rounded">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-layout-wtf brick-brown me-3" style="font-size: 2rem;"></i>
+              <h5 class="fw-bold text-primary m-0">Aménagement Intérieur</h5>
+            </div>
+            <p class="mb-3 text-primary ">Optimisation d’espace et design personnalisé pour un intérieur harmonieux.</p>
+            <p class="text-muted small m-0"><strong>Qualité :</strong> Organisée – Efficace – Esthétique</p>
+          </div>
+        </div>
+    </div>
+  </section>
+  <div class="container">
+      <div class="py-5">
+          {% if services is empty %}
+              <p>Aucun service trouvé.</p>
+          {% else %}
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 my-5">
+                  {% for service in services %}
+                      <div class="col">
+                          <div class="card shadow-sm bg-beige-lime rounded-3 border-0">
+                              <img 
+                                  src="{{ asset('images/services/' ~ service.image) }}" 
+                                  alt="{{ service.nom }}" 
+                                  class="card-img-top rounded-top"
+                              >
+                              <div class="card-body">
+                                  <h3 class="card-title text-primary">{{ service.nom }}</h3>
+                                  <p class="card-text text-primary">{{ service.description }}</p>
+                              </div>
+                          </div>    
+                      </div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+      </div>
+  </div>
+
+
+<style>    
+
+.hero {
+      background-color: var(--primary-light);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .services {
+      padding: 4rem 0;
+    }
+
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    </style>
+
+{% endblock %}
 

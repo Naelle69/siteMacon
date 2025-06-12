@@ -5,62 +5,64 @@
 {% block title %}Contactez-nous{% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1 class="text-center mb-5 fw-bold text-warning">Contactez-nous</h1>
+<div class="py-3 py-md-5 bg-beige-lime">
+    <div class="container my-3 my-md-5">
+        <h1 class="text-center fw-bold text-primary py-3 py-md-5">Contactez-nous</h1>
 
-    {# Message de succès #}
-    {% set flashes = app.flashes('success') %}
-    {% if flashes|length > 0 %}
-        <div class="alert alert-success rounded-4 text-center py-3">
-            {{ flashes[0] }}
-        </div>
-    {% endif %}
+        {# Message de succès #}
+        {% set flashes = app.flashes('success') %}
+        {% if flashes|length > 0 %}
+            <div class="alert alert-success rounded-4 text-center py-3">
+                {{ flashes[0] }}
+            </div>
+        {% endif %}
 
-    <div class="card card-bg shadow-sm border-0 rounded-4 overflow-hidden mx-auto" style="max-width: 700px;">
-        <div class="card-body p-5">
-            {{ form_start(form, {'attr': {'class': 'needs-validation text-secondary', 'novalidate': 'novalidate'}}) }}
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden mx-auto" style="max-width: 700px;">
+            <div class="card-body p-5">
+                {{ form_start(form, {'attr': {'class': 'needs-validation text-secondary', 'novalidate': 'novalidate'}}) }}
 
-                {# Champ Email #}
-                <div class="mb-4">
-                    {{ form_label(form.email, 'Votre email', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.email, {
-                        'attr': {
-                            'class': 'form-control bg-white border',
-                            'placeholder': 'exemple@email.com'
-                        }
-                    }) }}
-                    {{ form_errors(form.email) }}
-                </div>
+                    {# Champ Email #}
+                    <div class="mb-4">
+                        {{ form_label(form.email, 'Votre email', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.email, {
+                            'attr': {
+                                'class': 'form-control bg-white border',
+                                'placeholder': 'exemple@email.com'
+                            }
+                        }) }}
+                        {{ form_errors(form.email) }}
+                    </div>
 
-                {# Champ Message #}
-                <div class="mb-4">
-                    {{ form_label(form.message, 'Votre message', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.message, {
-                        'attr': {
-                            'class': 'form-control bg-white border',
-                            'rows': 5,
-                            'placeholder': 'Écrivez votre message ici...'
-                        }
-                    }) }}
-                    {{ form_errors(form.message) }}
-                </div>
+                    {# Champ Message #}
+                    <div class="mb-4">
+                        {{ form_label(form.message, 'Votre message', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.message, {
+                            'attr': {
+                                'class': 'form-control bg-white border',
+                                'rows': 5,
+                                'placeholder': 'Écrivez votre message ici...'
+                            }
+                        }) }}
+                        {{ form_errors(form.message) }}
+                    </div>
 
-                {# Champ Mot de passe (optionnel) #}
-                <div class="mb-4">
-                    {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(form.password, {
-                        'attr': {
-                            'class': 'form-control bg-white border',
-                            'placeholder': 'Sécurité'
-                        }
-                    }) }}
-                    {{ form_errors(form.password) }}
-                </div>
+                    {# Champ Mot de passe (optionnel) #}
+                    <div class="mb-4">
+                        {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.password, {
+                            'attr': {
+                                'class': 'form-control bg-white border',
+                                'placeholder': 'Sécurité'
+                            }
+                        }) }}
+                        {{ form_errors(form.password) }}
+                    </div>
 
-                {# Bouton Soumettre #}
-                <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">Envoyer</button>
+                    {# Bouton Soumettre #}
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">Envoyer</button>
 
-            {{ form_end(form) }}
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 </div>

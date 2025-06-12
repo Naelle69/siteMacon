@@ -1,37 +1,40 @@
-{% block body %}
-  
-        <div class="row g-4 mt-5 ">
-            <h2 class="mb-5 fw-bold text-warning text-center">Ils nous font confiance</h2>
-            {% for avis in avisList %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-bg card-animation h-100 shadow-sm border-0 bg-light p-4 rounded-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3 border" style="width: 50px; height: 50px; object-fit: cover;">
-                            <div>
-                                <h6 class="mb-0 fw-semibold">{{ avis.nomClient }}</h6>
-                                <small class="text-muted text-secondary">{{ avis.lieu }}</small>
+{% block body %} 
+    <section class="bg-beige-lime">
+        <div class="d-flex justify-content-center w-100 py-3 py-md-5">
+            <div class="container row align-items-center justify-content-center my-3 my-md-5">
+                <h2 class="mb-5 fw-bold text-primary">Ils nous font confiance</h2>
+                {% for avis in avisList %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card bg-white card-animation h-100 shadow-sm border-0 p-4 rounded-sn">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3 border" style="width: 50px; height: 50px; object-fit: cover;">
+                                <div>
+                                    <h6 class="mb-0 fw-semibold text-primary">{{ avis.nomClient }}</h6>
+                                    <small class="text-muted gris-clair">{{ avis.lieu }}</small>
+                                </div>
+                            </div>
+                            <p class="mb-3 fst-italic text-primary">{{ avis.commentaire }}</p>
+                            <div class="d-flex">
+                                {{ avis.etoilesHtml|raw }}
                             </div>
                         </div>
-                        <p class="mb-3 fst-italic text-warning">{{ avis.commentaire }}</p>
-                        <div class="d-flex text-warning">
-                            {{ avis.etoilesHtml|raw }}
-                        </div>
                     </div>
-                </div>
-            {% else %}
-                <div class="col-12">
-                    <p class=" text-muted">Aucun avis trouvé.</p>
-                </div>
-            {% endfor %}
-        </div>
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-muted">Aucun avis trouvé.</p>
+                    </div>
+                {% endfor %}
 
-        {# Affichage de la pagination #}
-        <div class="mt-4 d-flex justify-content-center">
-            {{ knp_pagination_render(avisList) }}
+                {# Affichage de la pagination #}
+                <div class="mt-4 d-flex justify-content-center">
+                    {{ knp_pagination_render(avisList) }}
+                </div>
+
+                <div class="text-center mt-5 pb-1 pb-md-3">
+                    <a href="{{ path('user_avis') }}" class="btn btn-outline-primary">Connectez-vous pour laisser un message</a>
+                </div>           
+            </div>
         </div>
-        
-        <div class="text-center mt-5">
-            <a href="{{ path('user_avis') }}" class="btn btn-outline-primary">Connectez-vous pour laisser un message</a>
-        </div>
+    </section>
 {% endblock %}
 

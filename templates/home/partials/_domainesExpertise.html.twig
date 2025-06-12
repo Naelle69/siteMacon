@@ -1,18 +1,18 @@
-<div class="row g-4 mt-5 text-center">
-    <h2 class="text-center mb-4 fw-bold text-warning">Nos domaines d'expertise</h2>
+<div class="row g-4 my-3 my-md-5 text-center">
+    <h2 class="text-center mb-4 fw-bold text-primary">Nos domaines d'expertise</h2>
     {% for domaine in domaines %}
         <div class="col-md-6 col-lg-4">
-            <div class="bg-light rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center p-3 mb-3" 
+            <div class="bg-beige-lime rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center p-3 mb-3" 
                  style="width: 60px; height: 60px;">
                 <i class="bi {{ domaine.icone }} text-icon" 
-                   style="font-size: 2rem; color: {{ domaine.couleurIcone ?: '#2a4853' }};"></i>
+                   style="font-size: 2rem; color: {{ domaine.couleurIcone ?: '#A05C3D' }};"></i>
             </div>
             <h5 class="fw-bold text-primary">{{ domaine.nom }}</h5>
-            <p class="text-muted text-secondary">{{ domaine.description }}</p>
+            <p class="text-muted text-primary">{{ domaine.description }}</p>
         </div>
     {% else %}
         <div class="col-12">
             <p class="text-muted text-primary">Aucun domaine d'expertise trouvé.</p>
         </div>
     {% endfor %}
-</div>
+</div> 
