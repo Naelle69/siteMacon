@@ -5,7 +5,7 @@
 {# Message de bienvenue #}
 <section class="pt-3 pt-md-5">
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <div class="alert alert-info text-primary w-100 d-flex align-items-center justify-content-center gap-3 shadow-sm ">
+    <div class="alert alert-info text-white w-100 d-flex align-items-center justify-content-center gap-3 shadow-sm ">
         <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle" width="40" height="40">
         Bonjour <strong>{{ app.user.nom }}</strong>, merci de partager votre avis avec nous.
     </div>

@@ -8,6 +8,8 @@ body {
 @import "~bootstrap/scss/bootstrap";
 
 :root {
+    --bs-blue: #E6DDD4 !important;
+    --bs-primary: #E6DDD4 !important;
     --primary: #3A5F7D;
     --primary-dark: #2E536B;
     --primary-light: #5A7A94;
@@ -29,8 +31,7 @@ body {
     background-color: var(--beige-lime);
 }
 
-.text-primary,
-.nav-link {
+.text-primary{
    color: #3A5F7D !important;
 }
 
@@ -66,6 +67,7 @@ body {
 
 .alert{
     margin-bottom: 0px !important;
+    border-radius: 0px !important;
 }
 
 .btn-primary {
@@ -76,7 +78,23 @@ body {
 
 .btn-primary:hover {
     background-color: #3A5F7D;
+    border-color: var(--primary-dark);
     transform: translateY(-2px);
+}
+
+.contact_type_form_email,
+.contact_type_form_password,
+.contact_type_form_message,
+.form-control:focus,
+.form-select:focus{
+    border-color: #3A5F7D;
+    box-shadow: none;
+    background-color: #fff !important;
+}
+
+#inputEmail .form-control,
+#inputPassword .form-control{
+    background-color: #ffffff !important;
 }
 
 .btn-outline-warning {
@@ -144,21 +162,58 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
-/* Pagination */
-.pagination {
+
+
+.pagination-custom {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-.page-item.active .page-link {
-    background-color: #3A5F7D;
-    border-color: #2E536B;
+.page-link {
+    color: var(--primary);
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    min-width: 36px;
+    text-align: center;
+
+    &:hover {
+        background-color: var(--primary-light); // #5A7A94
+        color: #fff;
+        text-decoration: none;
+    }
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+.page-item.active .page-link,
+.page-item.active .page-link:hover {
+    z-index: 3;
     color: #fff;
+    background-color: var(--primary);
+    border-color: var(--primary-dark);
     font-weight: bold;
 }
 
-.page-link {
-    color: #3A5F7D;
-    border-radius: 0.25rem;
+.page-link.prev-next {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.page-link.prev-next:hover {
+    background-color: var(--primary);
+    color: #fff;
 }
 
 
@@ -176,3 +231,39 @@ body {
     text-align: center;
     padding: 2rem 0;
 }
+
+
+
+/* Scroll horizontal uniquement sur mobile */
+@media (max-width: 767.98px) {
+    .avis-scroll-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Fluidité sur iOS */
+        scroll-snap-type: x mandatory; /* Alignement des cartes */
+    }
+
+    .card-wrapper {
+        min-width: 100%; /* Une carte par écran */
+        scroll-snap-align: start;
+    }
+}
+
+/* Pour tablette et desktop */
+.card-wrapper {
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .card-wrapper {
+        width: calc(50% - 1rem); /* 2 cartes par ligne */
+    }
+}
+
+@media (min-width: 992px) {
+    .card-wrapper {
+        width: calc(33.333% - 1rem); /* 3 cartes par ligne */
+    }
+}
+ 
