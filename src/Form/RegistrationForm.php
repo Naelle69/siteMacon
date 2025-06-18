@@ -13,6 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
+
+
 
 class RegistrationForm extends AbstractType
 {
@@ -57,6 +61,22 @@ class RegistrationForm extends AbstractType
                     new IsTrue([
                         'message' => 'Vous devez accepter les conditions.',
                     ]),
+                ],
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' => 'Image de profil (Avatar/Photo)',
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG, PNG ou GIF)',
+                    ])
                 ],
             ]);
     }

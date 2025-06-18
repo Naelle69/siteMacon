@@ -1,0 +1,43 @@
+{# templates/common/bootstrap5_pagination.html.twig #}
+
+{% if pagination.haveToPaginate %}
+<nav aria-label="Pagination" class="d-flex justify-content-center mt-4">
+    <ul class="pagination pagination-sm mb-0">
+
+        {# Précédent #}
+        {% if pagination.previous %}
+            <li class="page-item me-2">
+                <a class="page-link" href="{{ pagination.routeUrl(pagination.previous) }}">Précédent</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled me-2">
+                <span class="page-link">Précédent</span>
+            </li>
+        {% endif %}
+
+        {# Numéros de pages #}
+        {% for page in pagination.pagesInRange %}
+            {% if page == pagination.currentPage %}
+                <li class="page-item active me-2" aria-current="page">
+                    <span class="page-link">{{ page }}</span>
+                </li>
+            {% else %}
+                <li class="page-item me-2">
+                    <a class="page-link" href="{{ pagination.routeUrl(page) }}">{{ page }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {# Suivant #}
+        {% if pagination.next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ pagination.routeUrl(pagination.next) }}">Suivant</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Suivant</span>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

@@ -1,6 +1,8 @@
 # config/packages/knp_paginator.yaml
 knp_paginator:
-    page_range: 5                      # Nombre de pages visibles autour de la page active
+    template:
+        pagination: 'common/bootstrap5_pagination.html.twig'
+    page_range: 3                      # Nombre de pages visibles autour de la page active
     default_options:
         page_name: page                # Paramètre GET utilisé dans l'URL
         sort_field_name: sort          # Facultatif

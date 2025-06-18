@@ -5,7 +5,7 @@
                 <h2 class="text-center mb-5 fw-bold text-primary">Ils nous font confiance</h2>
 
                 {# Conteneur avec scroll horizontal sur mobile #}
-                <div class="avis-scroll-container overflow-x-auto d-flex flex-nowrap-mobile gap-4 pb-3">
+                <div class="avis-scroll-container overflow-x-auto d-flex flex-nowrap-mobile gap-4 pb-3 d-sm-flex d-md-none">
                     {% for avis in avisList %}
                         <div class="card-wrapper col-12 col-md-6 col-lg-4 px-2 flex-shrink-0">
                             <div class="card bg-white card-animation h-100 shadow-sm border-0 p-4 rounded-sn">
@@ -25,12 +25,33 @@
                     {% endfor %}
                 </div>
 
-               {# Pagination #}
-                <div class="mt-4 d-flex justify-content-center">
-                    <nav>
-                        {{ knp_pagination_render(avisList, 'pagination_custom.html.twig') }}
-                    </nav>
+                {# Bloc paginé pour tablette/desktop #}
+                <div class="row d-sm-none d-md-flex">
+                    {% for avis in avisList %}
+                        <div class="col-md-6 col-lg-4 px-2 ">
+                            {# Contenu de l'avis #}
+                            <div class="card bg-white card-animation h-100 shadow-sm border-0 p-4 rounded-sn">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3 border" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-0 fw-semibold text-primary">{{ avis.nomClient }}</h6>
+                                        <small class="text-muted gris-clair">{{ avis.lieu }}</small>
+                                    </div>
+                                </div>
+                                <p class="mb-3 fst-italic text-primary">{{ avis.commentaire }}</p>
+                                <div class="d-flex">
+                                    {{ avis.etoilesHtml|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
+
+                {# Affichage de la pagination seulement sur tablette/desktop #}
+                {# <div class="d-none d-md-block mt-4">
+                    {{ knp_pagination_render(avisList) }}
+                </div> #}
+                
                 <div class="text-center mt-5 pb-1 pb-md-3">
                     <a href="{{ path('user_avis') }}" class="btn btn-outline-primary">Connectez-vous pour laisser un message</a>
                 </div>

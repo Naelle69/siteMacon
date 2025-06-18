@@ -148,6 +148,53 @@ body {
     --bs-gradient: none;
 }
 
+
+/* Pagination */
+/* Styles généraux pour la pagination */
+.pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 6px 12px; /* Réduit l'espace interne */
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary); /* Couleur principale */
+    background-color: transparent;
+    border: 1px solid var(--primary); /* Bordure carrée */
+    border-radius: 4px; /* Arrondis légèrement */
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: var(--primary-light); /* Fond au survol */
+    color: white; /* Texte blanc */
+    border-color: var(--primary-dark); /* Bordure plus foncée */
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary); /* Fond actif */
+    color: white; /* Texte blanc */
+    border-color: var(--primary-dark); /* Bordure plus foncée */
+}
+
+.page-item.disabled .page-link {
+    color: var(--brick-brown); /* Grisé désactivé */
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: var(--brick-brown); /* Bordure grise */
+}
+
+/* Alignement horizontal */
+.pagination > li {
+    margin-right: 4px; /* Espacement entre boutons */
+}
+
+
+
 /* Désactiver la box-shadow pour les champs Bootstrap */
 .form-control:focus {
     box-shadow: none !important;

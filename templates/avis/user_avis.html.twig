@@ -4,9 +4,14 @@
 
 {# Message de bienvenue #}
 <section class="pt-3 pt-md-5">
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+{% if is_granted('ROLE_ADMIN') %}
     <div class="alert alert-info text-white w-100 d-flex align-items-center justify-content-center gap-3 shadow-sm ">
-        <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle" width="40" height="40">
+        {# <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" class="rounded-circle" width="40" height="40"> #}
+        {% if app.user.imageName %}
+            <div>
+                <img src="{{ asset('images/users/' ~ app.user.imageName) }}" alt="Avatar"  class="rounded-circle"  width="40" >
+            </div>
+        {% endif %}
         Bonjour <strong>{{ app.user.nom }}</strong>, merci de partager votre avis avec nous.
     </div>
 {% endif %}
@@ -70,13 +75,15 @@
 </section
 
  {# Liste des avis #}
-<div class="container py-3 py-md-5">
-    <div class="row justify-content-center my-3 my-md-5">
-        <div class="col-12 text-center">
+<div class="py-3 py-md-5">
+    <!-- Première ligne : Titre -->
+    <div class="container">
+        <div class="text-center my-3 my-md-5">
             <h1 class="fw-bold text-primary">Vos avis</h1>
         </div>
-
-        <div class="row g-4 justify-content-center">
+    
+        <!-- Deuxième ligne : Liste des avis -->
+        <div class="row g-4 justify-content-center mb-3 mb-md-5">
             {% for avis in pagination %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card card-animation h-100 shadow-sm border-0 bg-beige-lime p-4 rounded-4">
@@ -115,10 +122,11 @@
             {% endfor %}
         </div>
 
-        {# Pagination #}
-        <div class="mt-4 d-flex justify-content-center">
+        
+        <!-- Pagination -->
+        {# <div class="mt-4 d-flex justify-content-center">
             {{ knp_pagination_render(pagination) }}
-        </div>
+        </div> #}
     </div>
 </div>
 {% endblock %}
