@@ -26,10 +26,9 @@
                 </div>
 
                 {# Bloc paginé pour tablette/desktop #}
-                <div class="row d-sm-none d-md-flex">
+                <div class="row d-sm-none d-md-flex g-4">
                     {% for avis in avisList %}
-                        <div class="col-md-6 col-lg-4 px-2 ">
-                            {# Contenu de l'avis #}
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-white card-animation h-100 shadow-sm border-0 p-4 rounded-sn">
                                 <div class="d-flex align-items-center mb-3">
                                     <img src="{{ asset('images/2289_SkVNQSBGQU1PIDEwMjgtMTIy.jpg') }}" alt="Avatar" class="rounded-circle me-3 border" style="width: 50px; height: 50px; object-fit: cover;">
@@ -46,6 +45,7 @@
                         </div>
                     {% endfor %}
                 </div>
+
 
                 {# Affichage de la pagination seulement sur tablette/desktop #}
                 {# <div class="d-none d-md-block mt-4">

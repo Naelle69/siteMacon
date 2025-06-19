@@ -24,7 +24,7 @@ public function index(
     PaginatorInterface $paginator
 ): Response {
     // Récupère un seul header (par exemple avec l'id 3)
-    $header = $headerRepository->find(4);
+    $header = $headerRepository->find(1);
 
     // Récupère tous les domaines d'expertise
     $domaines = $domainesRepo->findAll();

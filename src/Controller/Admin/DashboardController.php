@@ -2,37 +2,66 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Avis;
+use App\Entity\Contact;
+use App\Entity\DomainesExpertise;
+use App\Entity\Service;
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use App\Entity\Chantiers;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class DashboardController extends AbstractCrudController
+class DashboardController extends AbstractDashboardController
 {
-    public static function getEntityFqcn(): string
+    #[Route('/admin', name: 'admin')]
+
+    public function index(): Response
     {
-        return User::class;
+      
+       return $this->render('admin/index.html.twig');
     }
 
-    public function configureFields(string $pageName): iterable
+    public function configureDashboard(): Dashboard
     {
-        return [
-            IdField::new('id')->onlyOnIndex(),
-            EmailField::new('email'),
-            TextField::new('username')->onlyOnIndex(),
-            ChoiceField::new('roles')
-                ->setLabel('Rôles')
-                ->setChoices([
-                    'Utilisateur' => 'ROLE_USER',
-                    'Administrateur' => 'ROLE_ADMIN',
-                    'Super Admin' => 'ROLE_SUPER_ADMIN',
-                ])
-                ->allowMultipleChoices()
-                ->renderExpanded(),
-            DateTimeField::new('createdAt')->onlyOnIndex(),
-        ];
+        return Dashboard::new()
+            ->setTitle('Site Maçon: Administration');
     }
+    
+    /* public function index(): Response
+    {
+        $url = $this->container->get(AdminUrlGenerator::class)
+            ->setController(ServiceCrudController::class)
+            ->generateUrl();
+
+        return $this->redirect($url);
+    } */
+
+    public function configureMenuItems(): iterable
+{
+    yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+
+    yield MenuItem::section('Gestion des utilisateurs');
+    yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
+
+    yield MenuItem::section('Contenu du site');
+    yield MenuItem::linkToCrud('Domaines d\'expertise', 'fa fa-briefcase', DomainesExpertise::class);
+    yield MenuItem::linkToCrud('Services', 'fa fa-cogs', Service::class);
+    yield MenuItem::linkToCrud('Chantiers', 'fa fa-tools', Chantiers::class);
+
+    yield MenuItem::section('Retours & Contact');
+    yield MenuItem::linkToCrud('Avis clients', 'fa fa-comment', Avis::class);
+    yield MenuItem::linkToCrud('Messages de contact', 'fa fa-envelope', Contact::class);
+
+    yield MenuItem::section();
+    yield MenuItem::linkToUrl('Revenir au site', 'fa fa-globe', $this->generateUrl('app_home'));
 }
+}
+
+/* if ($this->isGranted('ROLE_ADMIN')) {
+    yield MenuItem::section('Administration avancée');
+    // ...
+} */
