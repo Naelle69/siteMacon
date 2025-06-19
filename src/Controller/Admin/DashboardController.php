@@ -9,7 +9,7 @@ use App\Entity\Service;
 use App\Entity\User;
 use App\Entity\Chantiers;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+/* use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator; */
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,13 +25,7 @@ class DashboardController extends AbstractDashboardController
        return $this->render('admin/index.html.twig');
     }
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('Site Maçon: Administration');
-    }
-    
-    /* public function index(): Response
+        /* ou public function index(): Response
     {
         $url = $this->container->get(AdminUrlGenerator::class)
             ->setController(ServiceCrudController::class)
@@ -39,6 +33,14 @@ class DashboardController extends AbstractDashboardController
 
         return $this->redirect($url);
     } */
+
+    public function configureDashboard(): Dashboard
+    {
+        return Dashboard::new()
+            ->setTitle('Administration');
+            /* ->setTranslationDomaine('messages');
+            ->set */
+    }
 
     public function configureMenuItems(): iterable
 {
